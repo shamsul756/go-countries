@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { use } from 'react';
+// Import it as Country to match the file's export
+import Country from './components/Countries/Country'; 
 
-const counter = () => {
+const counter = ({countriesPromise}) => {
+    const countriesData = use(countriesPromise);
+    const countries = countriesData.countries;
+
     return (
         <div>
-            <h1>hello dev</h1>
+            <h1>In the countries: {countries.length}</h1>
+            {
+                countries.map(country => (
+                    /* Always add a 'key' prop when mapping in React */
+                    <Country key={country.cca3 || country.name.common} country={country} />
+                ))
+            }
         </div>
     );
 };

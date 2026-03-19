@@ -1,12 +1,17 @@
 
+import { Suspense } from 'react';
 import './App.css'
 import Counter from './counter'
- 
+const countriesPromise = fetch("https://openapi.programming-hero.com/api/all")
+  .then(res => res.json());
 function App() {
   return (
     <>
-   <Counter></Counter>
-   hello dev society
+ 
+   <Suspense fallback ={<p>waiting for data...</p>}>
+         <Counter countriesPromise={countriesPromise}></Counter>
+   </Suspense>
+
     </>
   )
 }
