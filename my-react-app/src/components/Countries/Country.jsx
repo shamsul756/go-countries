@@ -1,20 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // Use lowercase 'country' to match how you pass it from the parent
 const Country = ({ country }) => { 
-  
+  const [Visited, setVisited] = useState(false)
     // Check if country.name exists before logging to avoid "undefined" crashes
     const handleMove =()=>{
-        console.log("button click");
+      setVisited(!Visited)
     }
-    
     return (
-      <div className='country'>
+      <div className={`country ${Visited && 'country-visited'}`}>
         <img src={country?.flags?.flags?.png} alt="" />
             <h3>Name: {country?.name?.common}</h3>
             <p>population:{country?.population?.population}</p>
             <p>area:{country?.area?.area} {country?.area?.area > 300000 ? "big country" : "small country" } </p>
-            <button onClick={handleMove} className='btn'>Not Visited</button>
+            <button onClick={handleMove} className='btn'>{Visited? 'not-visited' : 'visited'}</button>
       </div>
     );
 };
