@@ -1,4 +1,5 @@
 import React, { use } from 'react';
+
 // Import it as Country to match the file's export
 import Country from './components/Countries/Country'; 
 
@@ -7,8 +8,8 @@ const counter = ({countriesPromise}) => {
     const countries = countriesData.countries;
 
     return (
-        <div>
-            <h1>In the countries: {countries.length}</h1>
+        <div className='countryGrid'>
+            
             {
                 countries.map(country => (
                     /* Always add a 'key' prop when mapping in React */

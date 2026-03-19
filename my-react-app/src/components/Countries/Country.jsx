@@ -2,16 +2,20 @@ import React from 'react';
 
 // Use lowercase 'country' to match how you pass it from the parent
 const Country = ({ country }) => { 
+  
     // Check if country.name exists before logging to avoid "undefined" crashes
-    
+    const handleMove =()=>{
+        console.log("button click");
+    }
     
     return (
-        <div style={{border: '1px solid gray', margin: '10px', padding: '10px'}}>
-            <img src={country?.flags?.flags?.png} alt="" />
-            <h1>Name: {country?.name?.common}</h1>
-            <p>population :{country?.population?.population}</p>
-            
-        </div>
+      <div className='country'>
+        <img src={country?.flags?.flags?.png} alt="" />
+            <h3>Name: {country?.name?.common}</h3>
+            <p>population:{country?.population?.population}</p>
+            <p>area:{country?.area?.area} {country?.area?.area > 300000 ? "big country" : "small country" } </p>
+            <button onClick={handleMove} className='btn'>Not Visited</button>
+      </div>
     );
 };
 
