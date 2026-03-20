@@ -208,3 +208,8 @@
   color: black;
   border: 3px solid yellow;
 }
+
+.flag-visited-container img{
+  width: 100px;
+  margin-right: 10px;
+}
